@@ -37,10 +37,11 @@ std::string DCypher::return_trash()
 {
     srand ( time(NULL) );
     if (rand() % 3 == 0)
-        return  pick_random(trash_expr) + std::to_string(public_key) ;
+        return  pick_random(trash_expr) + " " + std::to_string(public_key) ;
     else
-        if (rand() % 3 == 1)
-            return std::to_string(private_key);
-        else
-            return std::to_string(rand() % 100 + 1);
+    if (rand() % 3 == 1)
+        return pick_random(trash_expr) + " " + std::to_string(private_key);
+    else
+        return pick_random(trash_expr) + " " + std::to_string(rand() % 100 + 1);
 }
+
