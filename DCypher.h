@@ -5,7 +5,7 @@
 #include <iostream>
 #include <time.h>
 #include <algorithm>
-#include <set>
+#include <vector>
 
 class DCypher
 {
@@ -14,7 +14,7 @@ class DCypher
     //константа, которую мы хотим зашифровать
     int cypher_const;
     //множество с всегда истинными функциями
-    std::set<std::string> true_expr {"(j * j > 0)",
+    std::vector<std::string> true_expr {"(j * j > 0)",
                                      "(i * i > 0)"
                                      "(i * j == j * i"
                                      "(i + j == j + i)"
@@ -22,7 +22,7 @@ class DCypher
                                      "(i + i * 2 == 3 * i)"
                                      "(j + j == 2 * j)"};
     //множество с всегда истинными функциями
-    std::set<std::string> false_expr {"(j * j <= 0)",
+    std::vector<std::string> false_expr {"(j * j <= 0)",
                                      "(i * i <= 0)"
                                      "(i * j != j * i"
                                      "(i + j != j + i)"
@@ -32,6 +32,20 @@ class DCypher
 public:
     //переменная, значение которой мы знаем
     int public_key;
+
+    //конструктор
+    DCypher(int pr_k, int pub_k, int cyp_c);
+
+    //добавить истинное или ложное выражение в соответствующее множество(второй параметр определяет куда именно)
+    //выражение должно быть заключено в круглые скобки!
+    void insert_expr(std::string expr, bool b);
+
+    //выбрать истинное или ложное выражение из соответствующего множества(параметр определяет из какого)
+    std::string pick_random(bool b);
+
+    //конструировать "противоположное" выражение при помощи добавления отрицания и добавить в нужный set
+    std::string negation();
+
 
 };
 
