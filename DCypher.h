@@ -29,6 +29,14 @@ class DCypher
                                      "((i * j) * (i * j) != i * i + 2 * i * j + j * j)"
                                      "(i + i * 2 != 3 * i)"
                                      "(j + j != 2 * j)"};
+    //множество для функции return_trash
+    std::vector<std::string> trash_expr {"(i + j) / "
+                                         "(i * j) * "
+                                         "i - "
+                                         "j + i * "
+                                         "(i - j) * (j - i) +"
+                                         "j * j - "
+                                         "i * i - "};
 public:
     //переменная, значение которой мы знаем
     int public_key;
@@ -40,11 +48,18 @@ public:
     //выражение должно быть заключено в круглые скобки!
     void insert_expr(std::string expr, bool b);
 
-    //выбрать истинное или ложное выражение из соответствующего множества(параметр определяет из какого)
-    std::string pick_random(bool b);
+    //возвращает случайный эллемент вектора
+    std::string pick_random(std::vector<std::string> v);
 
-    //конструировать "противоположное" выражение при помощи добавления отрицания и добавить в нужный set
-    std::string negation();
+    //конструировать "противоположное" выражение при помощи добавления отрицания
+    std::string negation(std::string expr);
+
+    //генерирует return необходимой константы
+    std::string return_const();
+
+    //генерирует return для бесполезных веток
+    std::string return_trash();
+
 
 
 };

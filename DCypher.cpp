@@ -14,17 +14,33 @@ void DCypher::insert_expr(std::string expr, bool b)
         false_expr.push_back(expr);
 }
 
-std::string DCypher::negation()
+std::string DCypher::negation(std::string expr)
 {
     srand ( time(NULL) );
-    return "(!" + pick_random(rand() % 2) + ")";
+    return "(!" + expr + ")";
 }
 
-std::string DCypher::pick_random(bool b)
+std::string DCypher::pick_random(std::vector<std::string> v)
+{
+    return v[rand() % v.size()];
+}
+
+std::string DCypher::return_const()
+{
+    if (cypher_const == 0)
+        return "i * i - i * " + std::to_string(public_key);
+    else
+        return "i * i - i * " + std::to_string(public_key) + std::to_string(cypher_const);
+}
+
+std::string DCypher::return_trash()
 {
     srand ( time(NULL) );
-    if (b)
-        return true_expr[rand() % true_expr.size()];
+    if (rand() % 3 == 0)
+        return  pick_random(trash_expr) + std::to_string(public_key) ;
     else
-        return true_expr[rand() % true_expr.size()];
+        if (rand() % 3 == 1)
+            return std::to_string(private_key);
+        else
+            return std::to_string(rand() % 100 + 1);
 }
