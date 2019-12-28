@@ -65,3 +65,46 @@ std::string DCypher::gen_cond_op(std::string cond, std::string left, std::string
     return cond + " " + left + " : " + right;
 }
 
+std::string DCypher::gen_expr(int complexity)
+{
+    srand ( time(NULL) );
+    auto res = return_const();
+    for (auto i = 0; i < complexity; i++)
+    {
+        bool b = rand() % 2;
+        if (b)
+        {
+            std::string cond = create_cond(true);
+            for (auto j = 0; j < complexity / 2 + 1; j++)
+            {
+                bool d = rand() % 2;
+                if (d)
+                    cond = add_cond(cond, pick_random(true_expr), "&&");
+                else
+                    cond = add_cond(cond, negation(pick_random(false_expr)), "||");
+            }
+            if (i == 0)
+                res = gen_cond_op(cond, res, return_trash());
+            else
+                res =  gen_cond_op(cond, res, gen_cond_op(cond, return_trash(), return_trash()));
+        }
+        else
+        {
+            std::string cond = create_cond(false);
+            for (auto j = 0; j < complexity / 2 + 1; j++)
+            {
+                bool d = rand() % 2;
+                if (d)
+                    cond = add_cond(cond, negation(pick_random(true_expr)), "&&");
+                else
+                    cond = add_cond(cond, negation(negation(pick_random(false_expr))), "||");
+            }
+            if (i == 0)
+                res = gen_cond_op(cond, return_trash(), res);
+            else
+                res = gen_cond_op(cond, gen_cond_op(cond, return_trash(), return_trash()), res);
+        }
+    }
+    return res + ";";
+}
+

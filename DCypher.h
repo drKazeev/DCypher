@@ -24,7 +24,7 @@ class DCypher
     //множество с всегда истинными функциями
     std::vector<std::string> false_expr {"(j * j <= 0)",
                                          "(i * i <= 0)",
-                                         "(i * j != j * i",
+                                         "(i * j != j * i)",
                                          "(i + j != j + i)",
                                          "((i * j) * (i * j) != i * i + 2 * i * j + j * j)",
                                          "(i + i * 2 != 3 * i)",
