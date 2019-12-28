@@ -15,28 +15,29 @@ class DCypher
     int cypher_const;
     //множество с всегда истинными функциями
     std::vector<std::string> true_expr {"(j * j > 0)",
-                                     "(i * i > 0)"
-                                     "(i * j == j * i"
-                                     "(i + j == j + i)"
-                                     "((i * j) * (i * j) == i * i + 2 * i * j + j * j)"
-                                     "(i + i * 2 == 3 * i)"
-                                     "(j + j == 2 * j)"};
+                                        "(i * i > 0)",
+                                        "(i * j == j * i",
+                                        "(i + j == j + i)",
+                                        "((i * j) * (i * j) == i * i + 2 * i * j + j * j)",
+                                        "(i + i * 2 == 3 * i)",
+                                        "(j + j == 2 * j)"};
     //множество с всегда истинными функциями
     std::vector<std::string> false_expr {"(j * j <= 0)",
-                                     "(i * i <= 0)"
-                                     "(i * j != j * i"
-                                     "(i + j != j + i)"
-                                     "((i * j) * (i * j) != i * i + 2 * i * j + j * j)"
-                                     "(i + i * 2 != 3 * i)"
-                                     "(j + j != 2 * j)"};
+                                         "(i * i <= 0)",
+                                         "(i * j != j * i",
+                                         "(i + j != j + i)",
+                                         "((i * j) * (i * j) != i * i + 2 * i * j + j * j)",
+                                         "(i + i * 2 != 3 * i)",
+                                         "(j + j != 2 * j)"};
     //множество для функции return_trash
-    std::vector<std::string> trash_expr {"(i + j) / "
-                                         "(i * j) * "
-                                         "i - "
-                                         "j + i * "
-                                         "(i - j) * (j - i) +"
-                                         "j * j - "
+    std::vector<std::string> trash_expr {"(i + j) / ",
+                                         "(i * j) * ",
+                                         "i - ",
+                                         "j + i * ",
+                                         "(i - j) * (j - i) +",
+                                         "j * j - ",
                                          "i * i - "};
+
 public:
     //переменная, значение которой мы знаем
     int public_key;
