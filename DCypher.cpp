@@ -48,9 +48,9 @@ std::string DCypher::return_trash()
 std::string DCypher::create_cond(bool b)
 {
     if (b)
-        return "(" + pick_random(true_expr) + "):";
+        return "(" + pick_random(true_expr) + ")?";
     else
-        return "(" + pick_random(false_expr) + "):";
+        return "(" + pick_random(false_expr) + ")?";
 }
 
 std::string DCypher::add_cond(std::string src, std::string cond, std::string op)
@@ -58,5 +58,10 @@ std::string DCypher::add_cond(std::string src, std::string cond, std::string op)
     std::string expr = " " + op + " " + cond;
     src.insert(src.begin() + src.find_last_of(')'), expr.begin(), expr.end());
     return src;
+}
+
+std::string DCypher::gen_cond_op(std::string cond, std::string left, std::string right)
+{
+    return cond + " " + left + " : " + right;
 }
 

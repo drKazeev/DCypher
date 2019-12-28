@@ -67,6 +67,13 @@ public:
     //добавить к строке src, ещё одно условие cond,
     //используя оператор op
     std::string add_cond(std::string src, std::string cond, std::string op);
+
+    //сгенерировать тернарный оператор при помощи условия и двух веток
+    std::string gen_cond_op(std::string cond, std::string left, std::string right);
+
+    //сгенерировать выражение, вычисляющее константу
+    //в зависимости от сложности
+    std::string gen_expr(int complexity = 5);
 };
 
 
