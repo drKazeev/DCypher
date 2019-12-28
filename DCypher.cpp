@@ -45,3 +45,18 @@ std::string DCypher::return_trash()
         return pick_random(trash_expr) + " " + std::to_string(rand() % 100 + 1);
 }
 
+std::string DCypher::create_cond(bool b)
+{
+    if (b)
+        return "(" + pick_random(true_expr) + "):";
+    else
+        return "(" + pick_random(false_expr) + "):";
+}
+
+std::string DCypher::add_cond(std::string src, std::string cond, std::string op)
+{
+    std::string expr = " " + op + " " + cond;
+    src.insert(src.begin() + src.find_last_of(')'), expr.begin(), expr.end());
+    return src;
+}
+

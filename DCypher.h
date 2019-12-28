@@ -16,7 +16,7 @@ class DCypher
     //множество с всегда истинными функциями
     std::vector<std::string> true_expr {"(j * j > 0)",
                                         "(i * i > 0)",
-                                        "(i * j == j * i",
+                                        "(i * j == j * i)",
                                         "(i + j == j + i)",
                                         "((i * j) * (i * j) == i * i + 2 * i * j + j * j)",
                                         "(i + i * 2 == 3 * i)",
@@ -61,8 +61,12 @@ public:
     //генерирует return для бесполезных веток
     std::string return_trash();
 
+    //создать условие для тернарного оператора, истинное или ложное определяет параметр
+    std::string create_cond(bool b);
 
-
+    //добавить к строке src, ещё одно условие cond,
+    //используя оператор op
+    std::string add_cond(std::string src, std::string cond, std::string op);
 };
 
 
