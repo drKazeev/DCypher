@@ -6,3 +6,4 @@ This is test for NIISVA. Generate expresions on C++ for calculate constant with 
 затем при помощи функции gen_expr(complexity) можно получить выражение типа string, к сожалению, автор не нашел способа запускать эту строку,
 поэтому ее придётся копировать и подставлять к переменной.
 complexity влияет на количество вложенных условий и сложность самих условий
+в файле DCypher.cpp есть примеры запуска
