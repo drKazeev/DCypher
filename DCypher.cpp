@@ -30,7 +30,7 @@ std::string DCypher::return_const()
     if (cypher_const == 0)
         return "i * i - i * " + std::to_string(public_key);
     else
-        return "i * i - i * " + std::to_string(public_key) + std::to_string(cypher_const);
+        return "i * i - i * " + std::to_string(public_key) + " + " +std::to_string(cypher_const);
 }
 
 std::string DCypher::return_trash()
